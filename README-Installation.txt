@@ -1,7 +1,7 @@
-SNOOKER 1.6 – Neues App-Icon (Dunkelgrün / Schwarz / Gold)
+SNOOKER – Score & Friends Version 1.7
 
-ZIP entpacken und alle Dateien sowie den Ordner icons in das GitHub-Repository SNOOKER hochladen. Vorhandene Dateien ersetzen, Commit changes klicken.
+NEU: Dauerhafter Spielerpool. Namen einmal anlegen, antippen und per Dialog einem Team zuordnen. Teamzuordnungen werden pro abgeschlossenem Spiel in der Historie dokumentiert. Spielerpool ist im JSON-Backup enthalten. Bereits gespeicherte Spielernamen werden aus der Historie in den Pool übernommen.
 
-Die Funktionen von Version 1.5 bleiben unverändert. Die Service-Worker-Version wurde aktualisiert, damit das neue Icon offline geladen wird. Falls das alte Symbol auf dem Startbildschirm bleibt, App-Verknüpfung entfernen und die Website erneut zum Startbildschirm hinzufügen.
+INSTALLATION: Alle Dateien und den Ordner icons in das bestehende GitHub-Repository SNOOKER hochladen. Bestehende Dateien ersetzen. Vorher Backup der bisherigen Daten exportieren.
 
-Vor einem Update zur Sicherheit ein Backup der Spielhistorie erstellen.
+Die Daten bleiben lokal auf dem Gerät gespeichert.
