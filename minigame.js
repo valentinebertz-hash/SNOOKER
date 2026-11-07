@@ -21,7 +21,15 @@ function initPractice(){
  if(!practice.frame)practice.frame=requestAnimationFrame(practiceLoop);
 }
 function newBall(type,x,y){return {type,x,y,vx:0,vy:0,live:true,r:R};}
+function showPracticeEnd(message){
+ const overlay=document.getElementById('practice-end-overlay');
+ const description=document.getElementById('practice-end-text');
+ if(description)description.textContent=message;
+ if(overlay){overlay.hidden=false;overlay.querySelector('button')?.focus();}
+}
+function hidePracticeEnd(){const overlay=document.getElementById('practice-end-overlay');if(overlay)overlay.hidden=true;}
 function resetPractice(){
+ hidePracticeEnd();
  practice.balls=[];
  practice.balls.push(newBall('white',210,590));
  practice.balls.push(newBall('black',210,87));
@@ -141,7 +149,8 @@ function physicsStep(dt){
     practice.charging=false;practice.pointerId=null;practice.power=0;practice.aim=null;
     const meter=document.getElementById('practice-power');if(meter)meter.style.width='0%';
     for(const other of balls){other.live=false;other.vx=0;other.vy=0;}
-    practiceMessage('🏁 Spiel vorbei! Die schwarze Kugel ist in die Tasche gefallen. Der Tisch ist jetzt leer. Mit „Tisch neu aufstellen“ neu starten.');
+    practiceMessage('🏁 Spiel beendet – schwarze Kugel versenkt.');
+    showPracticeEnd('Die schwarze Kugel wurde versenkt. Der Tisch ist leer. Stelle die Kugeln neu auf, um eine neue Partie zu beginnen.');
     return;
    }
    continue;
