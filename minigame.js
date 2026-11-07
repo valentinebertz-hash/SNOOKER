@@ -140,8 +140,8 @@ function physicsStep(dt){
     practice.finished=true;
     practice.charging=false;practice.pointerId=null;practice.power=0;practice.aim=null;
     const meter=document.getElementById('practice-power');if(meter)meter.style.width='0%';
-    for(const other of balls){other.vx=0;other.vy=0;}
-    practiceMessage('🏁 Spiel beendet! Die schwarze Kugel wurde versenkt. Mit „Tisch neu aufstellen“ neu starten.');
+    for(const other of balls){other.live=false;other.vx=0;other.vy=0;}
+    practiceMessage('🏁 Spiel vorbei! Die schwarze Kugel ist in die Tasche gefallen. Der Tisch ist jetzt leer. Mit „Tisch neu aufstellen“ neu starten.');
     return;
    }
    continue;
