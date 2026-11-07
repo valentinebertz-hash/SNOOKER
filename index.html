@@ -91,11 +91,14 @@ try{const v=JSON.parse(localStorage.getItem(KEY));if(v&&Array.isArray(v.games))s
 function cleanName(n){return String(n||'').trim().replace(/\s+/g,' ').slice(0,70)}
 function addPoolSilently(n){n=cleanName(n);if(n&&!state.playerPool.some(x=>x.toLocaleLowerCase('de')===n.toLocaleLowerCase('de')))state.playerPool.push(n)}
 if(!Array.isArray(state.playerPool))state.playerPool=[];
+// Namenskorrektur auch bei bestehenden Installationen; historische Partien unverändert lassen.
+state.playerPool=state.playerPool.map(n=>cleanName(n)==='Bauyrschan'?'Bauyrshan':n);
+state.playerPool=state.playerPool.filter((n,i,a)=>a.findIndex(x=>x.toLocaleLowerCase('de')===n.toLocaleLowerCase('de'))===i);
 const exampleNames=new Set(['sigmund','karlos','ben','alex']);
 state.playerPool=state.playerPool.filter(n=>!exampleNames.has(cleanName(n).toLocaleLowerCase('de')));
 const seedKey='snooker-friends-v2-default-players-initialized';
 if(!localStorage.getItem(seedKey)||state.playerPool.length===0){
- ['Valentin','Bauyrschan','Robert','Johann F.','Viktor','Waldemar K.'].forEach(addPoolSilently);
+ ['Valentin','Bauyrshan','Robert','Johann F.','Viktor','Waldemar K.'].forEach(addPoolSilently);
  try{localStorage.setItem(seedKey,'1')}catch(e){}
 }
 try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}
